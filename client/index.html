@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <title>coffee shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/client/style.css">
+
+</head>
+<body>
+    <header class="header">
+
+        <a href="#" class="logo">
+            <img src="https://coffee-shop1.s3.us-east-2.amazonaws.com/coffee-logo-png-7519.png" alt="site logo">
+        </a>
+        <nav class="navbar">
+            <a href="#home">home</a>
+            <a href="#about">about</a>
+            <a href="#menu">menu</a>
+            <a href="#review">review</a>
+            <a href="#contact">contact</a>
+        </nav>
+        <div class="icons">
+            <div class="fas fa-search" id="search-btn"></div>
+            <div class="fas fa-shopping-cart" id="cart-btn"></div>
+            <div class="fas fa-bars" id="menu-btn"></div>
+        </div>
+
+        <div class="search-form">
+            <input type="search" id="search-box" placeholder="search here...">
+            <label for="search-box" class="fas fa-search"></label>
+        </div>
+
+        <div class="cart-items-container">
+            <div class="cart-item">
+                
+                
+                <div class="content">
+                    <img src="https://coffee-shop1.s3.us-east-2.amazonaws.com/img/item-1.jpg" alt="">
+                    <h3>cart item 01</h3>
+                    <div class="price">$8.99/-</div>
+                    <button class= "fas fa-times"></button>
+                </div>
+                
+            </div>
+
+            <a href="#" class="btn">checkout now</a>
+        </div>
+
+
+    </header>
+    <section class="home" id="home">
+
+        <div class="content">
+            <h3>fresh coffee in the morning</h3>
+            <p>paragraph</p>
+            <a href="#" class="btn">get yours now</a>
+        </div>
+    
+    </section>
+    
+    <section class="about" id="about">
+
+    <h1 class="heading"> <span>about</span> us </h1>
+
+    <div class="row">
+
+        <div class="image">
+            <img src="https://coffee-shop1.s3.us-east-2.amazonaws.com/img/about.jpg" alt="">
+        </div>
+
+        <div class="content">
+            <h3>what makes our coffee special?</h3>
+            <p>paragraph</p>
+            
+            <a href="#" class="btn">learn more</a>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="menu" id="menu">
+
+    <h1 class="heading"> our <span>menu</span> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img class="shop-item-image" src="https://coffee-shop1.s3.us-east-2.amazonaws.com/img/item-1.jpg" alt="coffee">
+            <h3 class="shop-item-title" >tasty and healty</h3>
+            <div class="price">$8.99 <span>$9.99</span></div>
+            <a href="#" class="btn">add to cart</a>
+        </div>
+
+
+</section>
+
+
+
+
+
+<script src="../node_modules/axios/dist/axios.min.js"></script>
+    <script src="/client/script.js"></script>
+</body>
+</html>
