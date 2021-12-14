@@ -32,17 +32,24 @@ window.onscroll = () =>{
     cartItem.classList.remove('active');
 }
 
-let removeCartItemButtons = document.getElementsByClassName('fas fa-times')
-
-  for (let i = 0; i<removeCartItemButtons.length; i++){
-    let button = removeCartItemButtons[i]
-    button.addEventListener('click', function(event){
-        let buttonClicked = event.target
-        buttonClicked.parentElement.parentElement.remove()
-    })
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
 }
 
+const delButton = document.querySelector('#check-out');
+delButton.addEventListener("click", function(e) {
+    e.preventDefault();
 
+    axios
+      .delete(`/api/cart`)
+      .then(function(response) {
+        alert(response.data);
+        removeAllChildNodes(itemcartcheckout)
+        
+      });
+});
 
 const productBoxContainer = document.querySelector('.box-container') 
 const itemcartcheckout = document.querySelector('.cart-item')
@@ -138,5 +145,36 @@ function getProduct(){
 
     })
 }
+
+const form = document.querySelector('form')
+
+function submitHandler(e) {
+    e.preventDefault()
+
+    let name = document.querySelector('#name')
+    let email = document.querySelector('#email')
+    let number = document.querySelector('#contact-number')
+
+    let bodyObj = {
+        name: name.value,
+        email: email.value, 
+        number: number.value
+
+    }
+console.log(bodyObj)
+    axios
+    .post('http://localhost:9876/api/contact', bodyObj)
+    .then(res=> alert(res.data))
+    .catch(err=> console.log(err))
+
+    name.value = ''
+    email.value = ''
+    number.value = ''
+}
+
+
+form.addEventListener('submit', submitHandler)
+
+
 document.addEventListener("DOMContentLoaded",getProduct)
 document.addEventListener("DOMContentLoaded",getCart)
