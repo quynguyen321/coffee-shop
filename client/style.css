@@ -54,11 +54,11 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.5rem 7%;
+    padding:1.5rem 7%;
     border-bottom: var(--border);
     position: fixed;
     top:0; left: 0; right: 0;
-    z-index: 10000;
+    z-index: 1000;
 }
 
 .header .logo img{
@@ -66,24 +66,25 @@ body{
 }
 
 .header .navbar a{
-    margin: 0 1 rem;
+    margin:0 1rem;
     font-size: 1.6rem;
-    color: #fff;
+    color:#fff;
 }
+
 .header .navbar a:hover{
-    color: var(--main-color);
+    color:var(--main-color);
     border-bottom: .1rem solid var(--main-color);
     padding-bottom: .5rem;
 }
 
 .header .icons div{
-    color: #fff;
+    color:#fff;
     cursor: pointer;
     font-size: 2.5rem;
     margin-left: 2rem;
 }
 
-.header .icons div :hover{
+.header .icons div:hover{
     color:var(--main-color);
 }
 
@@ -93,7 +94,7 @@ body{
 
 .header .search-form{
     position: absolute;
-    top: 115%; right: 7%;
+    top:115%; right: 7%;
     background: #fff;
     width: 50rem;
     height: 5rem;
@@ -102,6 +103,7 @@ body{
     transform: scaleY(0);
     transform-origin: top;
 }
+
 .header .search-form.active{
     transform: scaleY(1);
 }
@@ -114,6 +116,7 @@ body{
     padding:1rem;
     text-transform: none;
 }
+
 .header .search-form label{
     cursor: pointer;
     font-size: 2.2rem;
@@ -121,51 +124,58 @@ body{
     color:var(--black);
 }
 
-.header .search-form label :hover{
-    color: var(--main-color);
+.header .search-form label:hover{
+    color:var(--main-color);
 }
+
 .header .cart-items-container{
     position: absolute;
-    top: 100%; right: -100%;
+    top:100%; right: -100%;
     height: calc(100vh - 9.5rem);
     width: 35rem;
     background: #fff;
-    padding: 0 1.5rem;
+    padding:0 1.5rem;
 }
+
 .header .cart-items-container.active{
     right: 0;
 }
+
 .header .cart-items-container .cart-item{
     position: relative;
-    margin: 2rem 0;
+    margin:2rem 0;
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-
+    gap:1.5rem;
 }
+
 .header .cart-items-container .cart-item .fa-times{
     position: absolute;
-    top: 1rem; right: 1rem;
+    top:1rem; right: 1rem;
     font-size: 2rem;
     cursor: pointer;
-    color: var(--black)
+    color: var(--black);
 }
-.header .cart-items-container .cart-item .fa-times :hover{
-    color: var(--main-color);
+
+.header .cart-items-container .cart-item .fa-times:hover{
+    color:var(--main-color);
 }
+
 .header .cart-items-container .cart-item img{
     height: 7rem;
 }
+
 .header .cart-items-container .cart-item .content h3{
     font-size: 2rem;
-    color: var(--black);
+    color:var(--black);
     padding-bottom: .5rem;
 }
+
 .header .cart-items-container .cart-item .content .price{
     font-size: 1.5rem;
-    color: var(--maincolor);
-    
+    color:var(--main-color);
 }
+
 .header .cart-items-container .btn{
     width: 100%;
     text-align: center;
@@ -272,6 +282,54 @@ body{
     color:var(--black);
 }
 
+.contact .row{
+    display: flex;
+    background:var(--black);
+    flex-wrap: wrap;
+    gap:1rem;
+}
+
+.contact .row .map{
+    flex:1 1 45rem;
+    width: 100%;
+    object-fit: cover;
+}
+
+.contact .row form{
+    flex:1 1 45rem;
+    padding:5rem 2rem;
+    text-align: center;
+}
+
+.contact .row form h3{
+    text-transform: uppercase;
+    font-size: 3.5rem;
+    color:#fff;
+}
+
+.contact .row form .inputBox{
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background:var(--bg);
+    border:var(--border);
+}
+
+.contact .row form .inputBox span{
+    color:#fff;
+    font-size: 2rem;
+    padding-left: 2rem;
+}
+
+.contact .row form .inputBox input{
+    width: 100%;
+    padding:2rem;
+    font-size: 1.7rem;
+    color:#fff;
+    text-transform: none;
+    background:none;
+}
 
 
 

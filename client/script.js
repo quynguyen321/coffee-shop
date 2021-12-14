@@ -1,3 +1,5 @@
+
+
 let navbar = document.querySelector('.navbar');
 
 document.querySelector('#menu-btn').onclick = () =>{
@@ -20,6 +22,8 @@ document.querySelector('#cart-btn').onclick = () =>{
     cartItem.classList.toggle('active');
     navbar.classList.remove('active');
     searchForm.classList.remove('active');
+
+    getCart()
 }
 
 window.onscroll = () =>{
@@ -38,26 +42,101 @@ let removeCartItemButtons = document.getElementsByClassName('fas fa-times')
     })
 }
 
-// let addToCartButtons = document.getElementsByClassName('btn')
-//   for (let i = 0; i< addToCartButtons.length; i++) {
-//        let button = addToCartButtons[i]
-//        button.addEventListener('click', addToCartClicked)
-// }
 
-// function addToCartClicked(event) {
-//     var button = event.target
-//     var shopItem = button.parentElement.parentElement
-//     var title = shopItem.getElementsByClassName('shop-item-title')[0].innerText
-//     var price = shopItem.getElementsByClassName('price')[0].innerText
-//     var imageSrc = shopItem.getElementsByClassName('shop-item-image')[0].src
-//     addItemToCart(title, price, imageSrc)
-//     updateCartTotal()
-// }
-function geProduct(){
-    axios.get('http://localhost:9876/api/products')
+
+const productBoxContainer = document.querySelector('.box-container') 
+const itemcartcheckout = document.querySelector('.cart-item')
+function getCart(){
+    axios
+        .get('/api/cart')
+        .then((res) => {
+            console.log(res.data)
+            res.data.map(el =>{
+                let contentBox = document.createElement('div')
+                contentBox.classList.add('content')
+
+                let productBox = document.createElement("div")
+                let productName = document.createElement('h3')
+                productName.classList.add('shop-item-title')
+                productName.textContent = el.product_name
+                productBox.appendChild(productName)
+                itemcartcheckout.appendChild(productBox)
+
+                let imgTag = document.createElement("img")
+                imgTag.classList.add('shop-item-image')
+                imgTag.src = el.image
+                itemcartcheckout.appendChild(imgTag)
+
+                let productPrice = document.createElement('div')
+                productPrice.classList.add('price')
+                productPrice.textContent = el.price 
+                itemcartcheckout.appendChild(productPrice)
+                
+            })
+
+            
+        })
+        .catch((err) => console.log(err))
+}
+function getProduct(){
+    axios.get('/api/products')
     .then(res =>{
         console.log(res)
+        res.data.map(el=>{
+            let productBox = document.createElement("div")
+            productBox.setAttribute('name', el.order_id )
+            productBox.classList.add('box')
+            productBox.classList.add('product')
+            productBoxContainer.appendChild(productBox)
+
+
+            let imgTag = document.createElement("img")
+            imgTag.classList.add('shop-item-image')
+            imgTag.src = el.image
+            productBox.appendChild(imgTag)
+
+            let productName = document.createElement('h3')
+            productName.classList.add('shop-item-title')
+            productName.textContent = el.product_name
+            productBox.appendChild(productName)
+
+            let productPrice = document.createElement('div')
+            productPrice.classList.add('price')
+            productPrice.textContent = el.price 
+            productBox.appendChild(productPrice)
+            
+            let productBtn = document.createElement('a')
+            productBtn.classList.add('btn')
+            productBtn.classList.add('submit')
+          
+            
+            productBtn.textContent = "add to cart"
+            productBox.appendChild(productBtn)
+        })
+
+        let products = document.querySelectorAll('.product')
+
+
+        products.forEach(prod => {
+              let cartObj = {
+                 order_id: +prod.getAttribute('name'),
+                 product_name: prod.querySelector('.shop-item-title').textContent,
+                 image: prod.querySelector('.shop-item-image').getAttribute('src'),
+                 price: +prod.querySelector('.price').textContent,
+                }
+
+            let cartBtn = prod.querySelector('.submit')
+            cartBtn.addEventListener('click', function() {
+                
+                axios
+                    .post('/api/cart', cartObj)
+                    .then(() => alert('Item added'))
+                    .catch((err)=> console.log(err))
+
+            })
+        })
 
     })
 }
-
+document.addEventListener("DOMContentLoaded",getProduct)
+document.addEventListener("DOMContentLoaded",getCart)

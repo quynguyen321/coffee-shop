@@ -1,8 +1,8 @@
--- CREATE TABLE product
--- ( order_id SERIAL PRIMARY KEY, 
--- product_name VARCHAR(200), 
--- image VARCHAR(200),
--- price FLOAT NOT NULL );
+CREATE TABLE product
+( order_id SERIAL PRIMARY KEY, 
+product_name VARCHAR(200), 
+image VARCHAR(200),
+price FLOAT NOT NULL );
 
 
 
@@ -12,5 +12,6 @@ INSERT INTO product (product_name, image, price) VALUES
 ('coffee of the day','https://coffee-shop1.s3.us-east-2.amazonaws.com/img/item-3.jpg',9.99),
 ('coffee with bread','https://coffee-shop1.s3.us-east-2.amazonaws.com/img/item-4.jpg',12.99),
 ('morning coffee with bread','https://coffee-shop1.s3.us-east-2.amazonaws.com/img/item-5.jpg',13.99);
+-- select * from product;
 
 
