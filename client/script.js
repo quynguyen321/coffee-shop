@@ -163,7 +163,7 @@ function submitHandler(e) {
     }
 console.log(bodyObj)
     axios
-    .post('http://localhost:9876/api/contact', bodyObj)
+    .post('/api/contact', bodyObj)
     .then(res=> alert(res.data))
     .catch(err=> console.log(err))
 
